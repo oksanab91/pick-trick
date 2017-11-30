@@ -1,3 +1,4 @@
+import { ShopService } from './shop.service';
 import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -97,7 +98,8 @@ import { ProductCardComponent } from './product-card/product-card.component';
     AdminAuthGuard,
     UserService,
     CategoryService,
-    ProductService
+    ShopService,
+    ProductService    
   ],
   bootstrap: [AppComponent]
 })

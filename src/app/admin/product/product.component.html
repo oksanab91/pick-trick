@@ -30,6 +30,19 @@
                     Category is required.
                 </div>
             </div>
+
+            <div class="form-group">
+                <label for="shop">Shop</label>
+                <select #category="ngModel" [(ngModel)]="product.shop" name="shop" id="shop" class="form-control" required>
+                    <option value=""></option>
+                    <option *ngFor="let s of shops$ | async" [value]="s.$key">
+                    {{ s.name }}
+                    </option>
+                </select>
+                <!-- <div class="alert alert-danger" *ngIf="shop.touched && shop.invalid">
+                    Shop is required.
+                </div> -->
+            </div>
             <div class="form-group">
                 <label for="imageUrl">Image Url</label>
                 <input #imageUrl="ngModel" [(ngModel)]="product.imageUrl" name="imageUrl" id="imageUrl" type="text" class="form-control" required>
@@ -37,6 +50,7 @@
                     Image Url is required.
                 </div>
             </div>
+
             <button class="btn btn-primary">Save</button>
             <button type="button" (click)="delete()" class="btn btn-danger">Delete</button>
         </form>

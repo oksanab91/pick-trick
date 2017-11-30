@@ -3,6 +3,7 @@ import { CategoryService } from "../../category.service";
 import { ProductService } from "../../product.service";
 import { Router, ActivatedRoute } from "@angular/router";
 import 'rxjs/add/operator/take';
+import { ShopService } from '../../shop.service';
 
 @Component({
   selector: 'app-product',
@@ -12,6 +13,7 @@ import 'rxjs/add/operator/take';
 })
 export class ProductComponent implements OnInit {
   categories$;
+  shops$;
   product = {};
   id;
 
@@ -19,8 +21,10 @@ export class ProductComponent implements OnInit {
     private router: Router,
     private productService: ProductService, 
     private categoryService: CategoryService,
+    private shopService: ShopService,
     private route: ActivatedRoute) {
     this.categories$ = categoryService.getAll();
+    this.shops$ = shopService.getAll();
 
     this.id = this.route.snapshot.paramMap.get('id');
     if(this.id) this.productService.get(this.id).take(1).subscribe(p => this.product = p);

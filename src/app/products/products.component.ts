@@ -14,7 +14,8 @@ export class ProductsComponent {
   products: Product[] = [];
   filteredProducts: Product[] = [];  
   category: string;
-
+  shop: string;
+  
   constructor(
     route: ActivatedRoute,
     productService: ProductService) {
