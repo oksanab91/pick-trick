@@ -1,3 +1,4 @@
+import { CompareCartService } from '../compare-cart.service';
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import { Product } from '../models/product';
 
@@ -10,6 +11,21 @@ import { Product } from '../models/product';
 export class ProductCardComponent {
   @Input('product') product: Product;
   @Input('show-actions') showActions = true;
+  @Input('compare-cart') compareCart;
 
-  constructor() { }  
+  constructor(private compareService: CompareCartService) { }
+
+  addToCompare(){
+    this.compareService.addToCompare(this.product);    
+  }
+
+  removeFromCompare(){
+    this.compareService.removeFromCompare(this.product); 
+  }
+  
+  getInCompare(){
+    if(!this.compareCart) return 0;
+    let item = this.compareCart.items[this.product.$key];
+    return item ? 1 : 0;
+  }
 }

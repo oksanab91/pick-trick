@@ -1,8 +1,10 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { CompareCartService } from '../compare-cart.service';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { ProductService } from '../product.service';
 import { ActivatedRoute } from "@angular/router";
 import { Product } from '../models/product';
 import 'rxjs/add/operator/switchMap';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-products',
@@ -10,16 +12,20 @@ import 'rxjs/add/operator/switchMap';
   styleUrls: ['./products.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class ProductsComponent {
+export class ProductsComponent implements OnInit, OnDestroy{
   products: Product[] = [];
   filteredProducts: Product[] = [];  
   category: string;
   shop: string;
-  
+  cart: any; //compare cart
+  subscription: Subscription;
+    
   constructor(
     route: ActivatedRoute,
-    productService: ProductService) {
-
+    productService: ProductService,
+    private compareCartService: CompareCartService)
+  {
+    
     productService
       .getAll()
       .switchMap(products => {
@@ -35,4 +41,14 @@ export class ProductsComponent {
     });   
 
   }
+
+  async ngOnInit(){
+    console.log('stop2');
+    this.subscription = (await this.compareCartService.getCart())
+    .subscribe(cart => this.cart = cart);
+  }
+
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
+  } 
 }

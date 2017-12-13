@@ -30,6 +30,7 @@ import { CategoryService } from "./category.service";
 import { ProductService } from "./product.service";
 import { ProductFilterComponent } from './products/product-filter/product-filter.component';
 import { ProductCardComponent } from './product-card/product-card.component';
+import { CompareCartService } from './compare-cart.service';
 
 
 
@@ -99,7 +100,8 @@ import { ProductCardComponent } from './product-card/product-card.component';
     UserService,
     CategoryService,
     ShopService,
-    ProductService    
+    ProductService,
+    CompareCartService   
   ],
   bootstrap: [AppComponent]
 })
