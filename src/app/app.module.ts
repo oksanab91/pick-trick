@@ -14,7 +14,7 @@ import { AppComponent } from './app.component';
 import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
 import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
-import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { CompareCartComponent } from './compare-cart/compare-cart.component';
 import { CheckOutComponent } from './check-out/check-out.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
@@ -40,7 +40,7 @@ import { CompareCartService } from './compare-cart.service';
     BsNavbarComponent,
     HomeComponent,
     ProductsComponent,
-    ShoppingCartComponent,
+    CompareCartComponent,
     CheckOutComponent,
     OrderSuccessComponent,
     MyOrdersComponent,
@@ -64,7 +64,7 @@ import { CompareCartService } from './compare-cart.service';
       { path: '', component: ProductsComponent},
       { path: 'products', component: ProductsComponent},
       { path: 'login', component: LoginComponent},
-      { path: 'shopping-cart', component: ShoppingCartComponent},
+      { path: 'compare-cart', component: CompareCartComponent},
 
       { path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard]},      
       { path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuard]},
