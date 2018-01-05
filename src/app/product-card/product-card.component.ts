@@ -1,6 +1,7 @@
 import { CompareCartService } from '../compare-cart.service';
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import { Product } from '../models/product';
+import { CompareCart } from '../models/compare-cart';
 
 @Component({
   selector: 'product-card',
@@ -11,7 +12,7 @@ import { Product } from '../models/product';
 export class ProductCardComponent {
   @Input('product') product: Product;
   @Input('show-actions') showActions = true;
-  @Input('compare-cart') compareCart;
+  @Input('compare-cart') compareCart: CompareCart;
 
   constructor(private compareService: CompareCartService) { }
 
@@ -25,6 +26,7 @@ export class ProductCardComponent {
   
   getInCompare(){
     if(!this.compareCart) return 0;
+    if(!this.compareCart.items) return 0;
     let item = this.compareCart.items[this.product.$key];
     return item ? 1 : 0;
   }

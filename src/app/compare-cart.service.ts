@@ -1,8 +1,11 @@
+import { Observable } from 'rxjs/Rx';
 import { async } from '@angular/core/testing';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
 import { Product } from './models/product';
+import { CompareCart } from './models/compare-cart';
 import 'rxjs/add/operator/take';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class CompareCartService {
@@ -15,28 +18,21 @@ private create(){
   });
 }
 
-getCartId(){
-  //return this.db.object('/compare-carts' + cartId);
-  let cartId = localStorage.getItem('cartId');
-  return cartId;
-}
-async getCart(){
+async getCart():Promise<Observable<CompareCart>>{
+  console.log('stop');
   let cartId = await this.getOrCreateCartId();
-  return this.db.object('/compare-carts/' + cartId);
+    
+  return this.db.object('/compare-carts/' + cartId)
+  .map(x => new CompareCart(x.items));
 }
 private async getOrCreateCartId(): Promise<string>
-{
-  //console.log('stop');  
-  let cartId = this.getCartId();
+{  
+  let cartId = localStorage.getItem('cartId');
   if(cartId) return cartId;
   
-  return await this.createCartId();
-}
-private async createCartId(): Promise<string>
-{  
   let result = await this.create();
   localStorage.setItem('cartId', result.key);
-  return result.key;
+  return result.key;  
 }
 
 private getItem(cartId: string, productId: string){
@@ -50,7 +46,7 @@ async addToCompare(product: Product){
   });
 }
 async removeFromCompare(product: Product){
-  let cartId = this.getCartId();
+  let cartId = localStorage.getItem('cartId');
   if(cartId){      
     let item$ = this.getItem(cartId, product.$key); 
     item$.take(1).subscribe(item => {     
