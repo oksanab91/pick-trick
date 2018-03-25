@@ -8,7 +8,6 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { RouterModule } from '@angular/router';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
-import { DataTableModule} from 'angular-4-data-table-fix';
 
 import { AppComponent } from './app.component';
 import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
@@ -56,8 +55,7 @@ import { CompareCartService } from './compare-cart.service';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    FormsModule,
-    DataTableModule,
+    FormsModule,    
     NgbModule.forRoot(),
     RouterModule.forRoot([
       // { path: '', component: HomeComponent},

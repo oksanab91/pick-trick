@@ -33,15 +33,15 @@
 
             <div class="form-group">
                 <label for="shop">Shop</label>
-                <select #category="ngModel" [(ngModel)]="product.shop" name="shop" id="shop" class="form-control" required>
+                <select #shop="ngModel" [(ngModel)]="product.shop" name="shop" id="shop" class="form-control" required>
                     <option value=""></option>
                     <option *ngFor="let s of shops$ | async" [value]="s.$key">
                     {{ s.name }}
                     </option>
                 </select>
-                <!-- <div class="alert alert-danger" *ngIf="shop.touched && shop.invalid">
+                <div class="alert alert-danger" *ngIf="shop.touched && shop.invalid">
                     Shop is required.
-                </div> -->
+                </div>
             </div>
             <div class="form-group">
                 <label for="imageUrl">Image Url</label>

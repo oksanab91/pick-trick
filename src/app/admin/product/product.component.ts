@@ -4,6 +4,7 @@ import { ProductService } from "../../product.service";
 import { Router, ActivatedRoute } from "@angular/router";
 import 'rxjs/add/operator/take';
 import { ShopService } from '../../shop.service';
+import { Product } from '../../models/product';
 
 @Component({
   selector: 'app-product',
@@ -14,7 +15,7 @@ import { ShopService } from '../../shop.service';
 export class ProductComponent implements OnInit {
   categories$;
   shops$;
-  product = {};
+  product: Product;
   id;
 
   constructor(
