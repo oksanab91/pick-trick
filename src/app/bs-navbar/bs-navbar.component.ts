@@ -14,6 +14,7 @@ import { CompareCart } from '../models/compare-cart';
 export class BsNavbarComponent implements OnInit{
   appUser: AppUser;
   cart$: Observable<CompareCart>;
+  isCollapsed$;
 
   constructor(private auth: AuthService, private compareCartService: CompareCartService) {}
 
@@ -22,7 +23,7 @@ export class BsNavbarComponent implements OnInit{
     this.auth.appUser$.subscribe(appUser => this.appUser = appUser);
     this.cart$ = await this.compareCartService.getCart();    
     //cart$.items.length;
-      
+    this.isCollapsed$ = true; //fixing navbar-collapse issue
     }
     
   logout(){

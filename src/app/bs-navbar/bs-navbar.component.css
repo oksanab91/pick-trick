@@ -1,10 +1,7 @@
 .dropdown-toggle {
     cursor: pointer;
-    /* background-color: palegoldenrod; */
 }
 
-
-/* 
-.navbar-toggler:not(:disabled):not(.disabled) {
+.navbar-toggler {
     cursor: pointer;
-} */
+}

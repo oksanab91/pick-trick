@@ -3,11 +3,11 @@
         <a class="navbar-brand" routerLink="/">
             <i class="fa fa-bicycle"></i>
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>            
-            </button>
 
-        <div class="collapse navbar-collapse" id="navbarMain">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation" [attr.aria-expanded]="!isCollapsed$" (click)="isCollapsed$ = !isCollapsed$">
+            <span class="navbar-toggler-icon"></span>            
+        </button>
+        <div class="collapse navbar-collapse" id="navbarMain" [ngClass]="{'show': !isCollapsed$}">
             <ul class="nav navbar-nav mr-auto">
                 <!-- <li class="nav-item active">
                         <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
