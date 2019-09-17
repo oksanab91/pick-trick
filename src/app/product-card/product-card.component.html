@@ -8,12 +8,12 @@
     <div *ngIf="showActions" class="card-footer">
         <button *ngIf="getInCompare()===0; else removeCompare" (click)="addToCompare()" class="btn btn-success btn-block">
             <i class="fa fa-plus fa-lg"></i>            
-            Add to Compare</button>
+            Compare</button>
 
         <ng-template #removeCompare>
             <button (click)="removeFromCompare()" class="btn btn-danger btn-block">
                 <i class="fa fa-minus fa-lg"></i>            
-                Remove from Compare</button>
+                Compare</button>
         </ng-template>        
     </div>
 </div>

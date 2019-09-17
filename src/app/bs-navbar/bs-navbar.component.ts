@@ -15,17 +15,17 @@ export class BsNavbarComponent implements OnInit{
   appUser: AppUser;
   cart$: Observable<CompareCart>;
   isCollapsed$;
+  totalItemsCount: number;
 
   constructor(private auth: AuthService, private compareCartService: CompareCartService) {}
 
-  async ngOnInit(){
-    //console.log('stop');
+  async ngOnInit(){    
     this.auth.appUser$.subscribe(appUser => this.appUser = appUser);
-    this.cart$ = await this.compareCartService.getCart();    
-    //cart$.items.length;
-    this.isCollapsed$ = true; //fixing navbar-collapse issue
-    }
-    
+    this.cart$ = await this.compareCartService.getCart();
+    this.cart$.subscribe(cart => this.totalItemsCount = cart.totalItemsCount);   
+    this.isCollapsed$ = true;
+  }
+
   logout(){
     this.auth.logout();
   }

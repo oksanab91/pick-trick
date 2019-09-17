@@ -10,57 +10,29 @@ import { Product } from "../../models/product";
   styleUrls: ['./admin-products.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class AdminProductsComponent implements OnInit, OnDestroy {
+export class AdminProductsComponent implements OnDestroy {
   products: Product[];
   filteredProducts: Product[];
   subscription: Subscription;  
-  //items: Product[]=[];
   itemCount: number;
 
   constructor(private productService: ProductService) {    
     this.subscription = this.productService.getAll()
       .subscribe(products => {
         this.products = products;
-        this.filteredProducts = products;
-
-        //this.initTable(products);       
+        this.filteredProducts = products;      
       });
   }
-
-  // private initTable(products: Product[]) {
-
-  //   this.tableResource = new DataTableResource(products);
-
-  //   this.tableResource.query({ offset: 0})
-  //   .then(items => this.items = items);
-  //   this.tableResource.count()
-  //   .then(count => this.itemCount = count);
-  // }
-
-  // reloadItems(params) {
-  //   if(!this.tableResource) return;
-
-  //   this.tableResource.query(params)
-  //   .then(items => this.items = items);
-  // }
 
   filter(query: string) {
     console.log("filter stop");
     this.filteredProducts = (query) ? 
       this.products.filter(p => p.title.toLowerCase().includes(query.toLowerCase())) : 
       this.products;
-
-      //this.initTable(filteredProducts);
-
-    // console.log(query);
-    // this.products = this.productService.filter(query);
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-  
-  ngOnInit() {
-  }
-
+ 
 }

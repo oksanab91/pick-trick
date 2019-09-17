@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, FirebaseObjectObservable } from "angularfire2/database";
+import { AngularFireDatabase } from "angularfire2/database";
 
 
 @Injectable()
@@ -27,9 +27,4 @@ export class ProductService {
     return this.db.object('/products/' + productId);
   }
 
-  // filter(query) {
-  //   // return this.db.list('/products').query.
-  //   //   .where('/',"==",query)
-  //   // ;
-  // }
 }

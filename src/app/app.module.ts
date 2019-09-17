@@ -57,8 +57,7 @@ import { CompareCartService } from './compare-cart.service';
     AngularFireAuthModule,
     FormsModule,    
     NgbModule.forRoot(),
-    RouterModule.forRoot([
-      // { path: '', component: HomeComponent},
+    RouterModule.forRoot([      
       { path: '', component: ProductsComponent},
       { path: 'products', component: ProductsComponent},
       { path: 'login', component: LoginComponent},

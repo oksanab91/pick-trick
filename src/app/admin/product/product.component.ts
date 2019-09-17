@@ -28,11 +28,10 @@ export class ProductComponent implements OnInit {
     this.shops$ = shopService.getAll();
 
     this.id = this.route.snapshot.paramMap.get('id');
-    if(this.id) this.productService.get(this.id).take(1).subscribe(p => this.product = p);
+    if(this.id) this.productService.get(this.id).subscribe(p => this.product = p);
    }  
 
   save(product) {
-    // console.log(product);
     if(this.id) {
       this.productService.update(this.id, product);
     }else{
