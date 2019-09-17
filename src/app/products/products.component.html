@@ -1,28 +1,17 @@
 <div class="row">
     <div class="col-3">
         <product-filter [category]="category"></product-filter>
-        <!-- <div class="list-group">
-            <a class="list-group-item list-group-item-action" [class.active]="!category" routeLink="/">
-            All Categories
-          </a>
-            <a *ngFor="let c of categories$ | async" routerLink="/" [queryParams]="{ category: c.$key }" class="list-group-item list-group-item-action" [class.active]="category === c.$key">
-              {{ c.name }}
-          </a>
-        </div> -->
     </div>
 
     <div class="col">
         <!-- memory: no-gutters-->
         <div class="row">
-            <ng-container *ngFor="let p of filteredProducts; let i = index">
-                <!-- <div class="container-fluid" *ngFor="let p of filteredProducts; let i = index"> -->
+            <ng-container *ngFor="let p of filteredProducts; let i = index">                
                 <div class="col-xs-12 col-sm-6 col-lg-6">
-
                     <div class="container-fluid">
-                        <product-card [product]="p" [compare-cart]="cart"></product-card>
+                        <product-card [product]="p" [compare-cart]="cart$ | async"></product-card>
                     </div>
-                </div>
-                <!-- <div *ngIf="(i + 1) % 2 === 0" class="w-100"></div> -->
+                </div>                
             </ng-container>
         </div>
     </div>
