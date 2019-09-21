@@ -4,21 +4,23 @@
             <i class="fa fa-bicycle"></i>
         </a>
 
+        <filter-navbar-overlay></filter-navbar-overlay>        
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation" [attr.aria-expanded]="!isCollapsed$" (click)="isCollapsed$ = !isCollapsed$">
             <span class="navbar-toggler-icon"></span>            
         </button>
         <div class="collapse navbar-collapse" id="navbarMain" [ngClass]="{'show': !isCollapsed$}">
-            <ul class="nav navbar-nav mr-auto">            
+            <ul class="nav navbar-nav mr-auto">          
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/compare-cart">
-                        <i class="fa fa-shopping-cart"></i>
+                        <i class="fa fa-balance-scale"></i>
                         <span class="badge badge-warning badge-pill" *ngIf="cart$ | async as cart">
                             {{ totalItemsCount }}
                         </span>
                     </a>
                 </li>
             </ul>
-          
+
             <ul class="navbar-nav">
                 <ng-template #anonymousUser>
                     <li class="nav-item">

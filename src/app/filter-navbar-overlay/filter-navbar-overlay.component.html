@@ -1,0 +1,15 @@
+<!-- The overlay -->
+<form class="navbar-form navbar-left">
+  <div id="navFilter" class="overlay" [ngStyle]="styleNav()">
+      <a class="close-btn" (click)="closeNav()">&times;</a>    
+    
+      <!-- Overlay content -->  
+      <div class="overlay-content">
+          <product-filter [category]="category"></product-filter>
+      </div>    
+    </div>
+   
+    <a class="btn navbar-toggler open-btn" role="button" (click)="openNav()">        
+        <i class="fa fa-filter"></i>      
+    </a>
+</form>

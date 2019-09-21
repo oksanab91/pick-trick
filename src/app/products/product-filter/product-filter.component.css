@@ -1,3 +1,36 @@
-.sticky-top {
+.filter-sticky-top {
     top: 80px;
+}
+
+@media screen and (max-height: 450px) {
+    .list-group a {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 768px) {    
+    .list-group-item {
+        border: none;
+        background-color: transparent;
+    }     
+
+    .list-group-item-action:focus, .list-group-item-action:hover {
+        background-color: transparent;
+        color: #f1f1f1;
+        cursor: pointer;
+    }
+    
+    .list-group-item.active{
+        background-color: transparent;
+    }
+
+    .list-group a {
+        padding: 8px;
+        text-decoration: none;
+        font-size: 28px;
+        color: #818181;
+        display: block; /* Display block instead of inline */
+        transition: 0.3s; /* Transition effects on hover (color) */
+        cursor: pointer;
+    }
 }

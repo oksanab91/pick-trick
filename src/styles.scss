@@ -23,3 +23,22 @@ body {
 #mainContainer {
     padding-top: 15px;
 }
+
+
+@media screen and (max-width: 768px) {
+    .col-sm-12{
+        padding-left: 0;
+        padding-right: 0;
+    }
+    
+    .sticky-filter {
+        display: none;
+    } 
+}
+
+@media screen and (max-width: 600px) {    
+    .col-sm-12{
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+}

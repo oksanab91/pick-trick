@@ -30,6 +30,7 @@ import { ProductService } from "./product.service";
 import { ProductFilterComponent } from './products/product-filter/product-filter.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { CompareCartService } from './compare-cart.service';
+import { FilterNavbarOverlayComponent } from './filter-navbar-overlay/filter-navbar-overlay.component';
 
 
 
@@ -48,7 +49,8 @@ import { CompareCartService } from './compare-cart.service';
     LoginComponent,
     ProductComponent,
     ProductFilterComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    FilterNavbarOverlayComponent
   ],
   imports: [
     BrowserModule,
@@ -59,6 +61,7 @@ import { CompareCartService } from './compare-cart.service';
     NgbModule.forRoot(),
     RouterModule.forRoot([      
       { path: '', component: ProductsComponent},
+      // { path: '', redirectTo: '/products', pathMatch: 'full' },
       { path: 'products', component: ProductsComponent},
       { path: 'login', component: LoginComponent},
       { path: 'compare-cart', component: CompareCartComponent},

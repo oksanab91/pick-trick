@@ -41,13 +41,13 @@ export class ProductsComponent implements OnInit {
           return this.route.queryParamMap;
         })     
         .subscribe(params => {
-          this.category = params.get('category');  
+          this.category = params.get('category');          
           this.applyFilter();     
       }      
       );
   }
 
-  private applyFilter(){
+  private applyFilter(){    
     this.filteredProducts = (this.category) ?
     this.products.filter(p => p.category == this.category) :
     this.products;
